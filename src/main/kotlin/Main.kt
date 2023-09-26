@@ -12,7 +12,11 @@ val cycletoWorkSchemeMonthlyDeduction = 54.33
 
 fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
 
-
+fun getFullName()= if (gender === "M") {
+    " Mr. $firstName $surName"
+}else{
+    "Mrs. $firstName $surName"
+}
 
 fun printingPayslip(){
     val monthlySalary = grossSalary/12
@@ -27,7 +31,7 @@ fun printingPayslip(){
     println("""    -------------------------------------------------------------------
     |                       Monthly Payslip                           |
     |-----------------------------------------------------------------|
-    |   Employee Name:${firstName.uppercase()} ${surName.uppercase()}($gender)         Employee Id:$employeeId            |
+    |   Employee Name:${getFullName()}         Employee Id:$employeeId          |
     |-----------------------------------------------------------------|
     |   PAYMENT DETAILS                   DEDUCTION DETAILS           |
     |-----------------------------------------------------------------|
@@ -42,6 +46,7 @@ fun printingPayslip(){
 }
 
 fun main(args: Array<String>) {
+    println(getFullName())
     println("Pay Slip Printer")
     printingPayslip()
 }
