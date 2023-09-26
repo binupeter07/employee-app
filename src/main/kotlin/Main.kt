@@ -18,35 +18,36 @@ fun getFullName()= if (gender === "M") {
     "Mrs. $firstName $surName"
 }
 
-fun printingPayslip(){
-    val monthlySalary = grossSalary/12
-    val payee = payePercentage * monthlySalary/100
-    val bonus = annualBonusAmount/12
-    val prsi = monthlySalary*prsiPercentage/100
+fun getMonthlySalary()= roundTwoDecimals(grossSalary/12)
+fun getMonthlyPRSI()= roundTwoDecimals(getMonthlySalary() * (prsiPercentage/100))
+fun getMonthlyPAYE() = roundTwoDecimals(getMonthlySalary() * (payePercentage/100))
+fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (annualBonusAmount / 12))
+fun getTotalMonthlyDeductions() =roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() +cycletoWorkSchemeMonthlyDeduction) )
+fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
 
-    val gross = grossSalary/12
-    val monthlyDeduction = payee+prsi+cycletoWorkSchemeMonthlyDeduction
-    val netpay = gross - monthlyDeduction
+fun printingPayslip(){
+    val bonus = annualBonusAmount/12
+
 
     println("""    -------------------------------------------------------------------
     |                       Monthly Payslip                           |
     |-----------------------------------------------------------------|
-    |   Employee Name:${getFullName()}         Employee Id:$employeeId          |
+    |   Employee Name:${getFullName()}       Employee Id:$employeeId            |
     |-----------------------------------------------------------------|
     |   PAYMENT DETAILS                   DEDUCTION DETAILS           |
     |-----------------------------------------------------------------|
-    |   Salary:${roundTwoDecimals(monthlySalary)}                     PAYEE: ${roundTwoDecimals(payee)}              |
-    |   Bonus: ${roundTwoDecimals(bonus)}                     PRSI:${roundTwoDecimals(prsi)}                 |
+    |   Salary:${getMonthlySalary()}                     PAYEE: ${getMonthlyPAYE()}              |
+    |   Bonus: ${roundTwoDecimals(bonus)}                     PRSI:${getMonthlyPRSI()}                 |
     |                                     Cycle To Work:$cycletoWorkSchemeMonthlyDeduction         |
     |-----------------------------------------------------------------|
-    |  Gross:${roundTwoDecimals(gross)}                   Total Deduction:${roundTwoDecimals(monthlyDeduction)}         |
+    |   Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}     |
     |-----------------------------------------------------------------|
-    |                  NET PAY: ${roundTwoDecimals(netpay)}                               |
+    |                    NET PAY: ${getNetMonthlyPay()}                             |
     -------------------------------------------------------------------""")
 }
 
 fun main(args: Array<String>) {
     println(getFullName())
-    println("Pay Slip Printer")
+    println(" Pay Slip Printer")
     printingPayslip()
 }
