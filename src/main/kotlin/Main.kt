@@ -12,7 +12,7 @@ val cycletoWorkSchemeMonthlyDeduction = 54.33
 
 fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
 
-fun getFullName()= if (gender === "M") {
+fun getFullName()= if (gender === "M" || gender==="m") {
     " Mr. $firstName $surName"
 }else{
     "Mrs. $firstName $surName"
@@ -25,8 +25,9 @@ fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (annualBonusAmo
 fun getTotalMonthlyDeductions() =roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() +cycletoWorkSchemeMonthlyDeduction) )
 fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
 
-fun printingPayslip(){
-    val bonus = annualBonusAmount/12
+fun getBonus() = roundTwoDecimals(annualBonusAmount/12)
+fun getPayslip() =
+
 
 
     println("""    -------------------------------------------------------------------
@@ -37,17 +38,17 @@ fun printingPayslip(){
     |   PAYMENT DETAILS                   DEDUCTION DETAILS           |
     |-----------------------------------------------------------------|
     |   Salary:${getMonthlySalary()}                     PAYEE: ${getMonthlyPAYE()}              |
-    |   Bonus: ${roundTwoDecimals(bonus)}                     PRSI:${getMonthlyPRSI()}                 |
+    |   Bonus: ${getBonus()}                     PRSI:${getMonthlyPRSI()}                 |
     |                                     Cycle To Work:$cycletoWorkSchemeMonthlyDeduction         |
     |-----------------------------------------------------------------|
     |   Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}     |
     |-----------------------------------------------------------------|
     |                    NET PAY: ${getNetMonthlyPay()}                             |
     -------------------------------------------------------------------""")
-}
+
 
 fun main(args: Array<String>) {
     println(getFullName())
     println(" Pay Slip Printer")
-    printingPayslip()
+    println(getPayslip())
 }
