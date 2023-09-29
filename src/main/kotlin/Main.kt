@@ -58,7 +58,7 @@ fun menu(): Int{
             6. Monthly Net Pay
             7. Full Payslip
             -1.Exit
-        Enter Option : """
+             Enter Option : """
     )
     return readLine()!!.toInt()
 
@@ -79,13 +79,6 @@ fun main(args: Array<String>) {
             else -> println("Invalid Option")
 
         }
+        println()
     }while (input != -1)
-    println(getFullName())
-    println("Monthly Salary: ${getMonthlySalary()}")
-
-
-
-
-
-
 }
