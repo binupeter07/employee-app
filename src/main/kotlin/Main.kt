@@ -1,31 +1,31 @@
 import java.math.RoundingMode
 
-val firstName = "Joe"
-val surName = "Soap"
-val gender = "M"
-val employeeId = 6143
-val grossSalary = 67543.21
-val payePercentage = 38.5
-val prsiPercentage = 5.2
-val annualBonusAmount = 1450.50
-val cycletoWorkSchemeMonthlyDeduction = 54.33
-
+//val firstName = "Joe"
+//val surName = "Soap"
+//val gender = "M"
+//val employeeId = 6143
+//val grossSalary = 67543.21
+//val payePercentage = 38.5
+//val prsiPercentage = 5.2
+//val annualBonusAmount = 1450.50
+//val cycletoWorkSchemeMonthlyDeduction = 54.33
+ var employee = Employee("Joe","Soap", "m",6143,67543.21,38.5,5.2,1450.50,54.3)
 fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
 
-fun getFullName()= if (gender === "M" || gender==="m") {
-    " Mr. $firstName $surName"
+fun getFullName()= if (employee.gender === "M" || employee.gender==="m") {
+    " Mr. ${employee.firstName} ${employee.surName}"
 }else{
-    "Mrs. $firstName $surName"
+    "Mrs. ${employee.firstName} ${employee.surName}"
 }
 
-fun getMonthlySalary()= roundTwoDecimals(grossSalary/12)
-fun getMonthlyPRSI()= roundTwoDecimals(getMonthlySalary() * (prsiPercentage/100))
-fun getMonthlyPAYE() = roundTwoDecimals(getMonthlySalary() * (payePercentage/100))
-fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (annualBonusAmount / 12))
-fun getTotalMonthlyDeductions() =roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() +cycletoWorkSchemeMonthlyDeduction) )
+fun getMonthlySalary()= roundTwoDecimals(employee.grossSalary/12)
+fun getMonthlyPRSI()= roundTwoDecimals(getMonthlySalary() * (employee.prsiPercentage/100))
+fun getMonthlyPAYE() = roundTwoDecimals(getMonthlySalary() * (employee.payePercentage/100))
+fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (employee.annualBonus / 12))
+fun getTotalMonthlyDeductions() =roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() +employee.cycleToWorkMonthlyDeduction) )
 fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
 
-fun getBonus() = roundTwoDecimals(annualBonusAmount/12)
+fun getBonus() = roundTwoDecimals(employee.annualBonus/12)
 fun getPayslip() =
 
 
@@ -33,15 +33,15 @@ fun getPayslip() =
     println("""    -------------------------------------------------------------------
     |                       Monthly Payslip                           |
     |-----------------------------------------------------------------|
-    |   Employee Name:${getFullName()}       Employee Id:$employeeId            |
+    |   Employee Name:${getFullName()}       Employee Id:${employee.employeeID}            |
     |-----------------------------------------------------------------|
     |   PAYMENT DETAILS                   DEDUCTION DETAILS           |
     |-----------------------------------------------------------------|
     |   Salary:${getMonthlySalary()}                     PAYEE: ${getMonthlyPAYE()}              |
     |   Bonus: ${getBonus()}                     PRSI:${getMonthlyPRSI()}                 |
-    |                                     Cycle To Work:$cycletoWorkSchemeMonthlyDeduction         |
+    |                                     Cycle To Work:${employee.cycleToWorkMonthlyDeduction}          |
     |-----------------------------------------------------------------|
-    |   Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}     |
+    |   Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}      |
     |-----------------------------------------------------------------|
     |                    NET PAY: ${getNetMonthlyPay()}                             |
     -------------------------------------------------------------------""")
