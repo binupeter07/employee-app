@@ -1,18 +1,10 @@
 import java.math.RoundingMode
 
-//val firstName = "Joe"
-//val surName = "Soap"
-//val gender = "M"
-//val employeeId = 6143
-//val grossSalary = 67543.21
-//val payePercentage = 38.5
-//val prsiPercentage = 5.2
-//val annualBonusAmount = 1450.50
-//val cycletoWorkSchemeMonthlyDeduction = 54.33
- var employee = Employee("Joe","Soap", "m",6143,67543.21,38.5,5.2,1450.50,54.3)
+
+ var employee = Employee("Joe","Soap", 'm',6143,67543.21,38.5,5.2,1450.50,54.3)
 fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
 
-fun getFullName()= if (employee.gender === "M" || employee.gender==="m") {
+fun getFullName()= if (employee.gender == 'm' || employee.gender =='M') {
     " Mr. ${employee.firstName} ${employee.surName}"
 }else{
     "Mrs. ${employee.firstName} ${employee.surName}"
@@ -33,17 +25,17 @@ fun getPayslip() =
     println("""    -------------------------------------------------------------------
     |                       Monthly Payslip                           |
     |-----------------------------------------------------------------|
-    |   Employee Name:${getFullName()}       Employee Id:${employee.employeeID}            |
+    |   Employee Name:${getFullName()}       Employee Id:${employee.employeeID}          |
     |-----------------------------------------------------------------|
     |   PAYMENT DETAILS                   DEDUCTION DETAILS           |
     |-----------------------------------------------------------------|
     |   Salary:${getMonthlySalary()}                     PAYEE: ${getMonthlyPAYE()}              |
     |   Bonus: ${getBonus()}                     PRSI:${getMonthlyPRSI()}                 |
-    |                                     Cycle To Work:${employee.cycleToWorkMonthlyDeduction}          |
+    |                                     Cycle To Work:${employee.cycleToWorkMonthlyDeduction}         |
     |-----------------------------------------------------------------|
-    |   Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}      |
+    |   Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}     |
     |-----------------------------------------------------------------|
-    |                    NET PAY: ${getNetMonthlyPay()}                             |
+    |                    NET PAY: ${getNetMonthlyPay()}                               |
     -------------------------------------------------------------------""")
 
 
@@ -63,7 +55,33 @@ fun menu(): Int{
     return readLine()!!.toInt()
 
 }
+
+fun add(){
+    print("Enter first name: ")
+    val firstName = readLine().toString()
+    print("Enter surname: ")
+    val surname = readLine().toString()
+    print("Enter gender (m/f): ")
+    val gender = readLine()!!.toCharArray()[0]
+    print("Enter employee ID: ")
+    val employeeID = readLine()!!.toInt()
+    print("Enter gross salary: ")
+    val grossSalary = readLine()!!.toDouble()
+    print("Enter PAYE %: ")
+    val payePercentage = readLine()!!.toDouble()
+    print("Enter PRSI %: ")
+    val prsiPercentage = readLine()!!.toDouble()
+    print("Enter Annual Bonus: ")
+    val annualBonus= readLine()!!.toDouble()
+    print("Enter Cycle to Work Deduction: ")
+    val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
+
+    employee = Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction)
+}
+
+
 fun main(args: Array<String>) {
+    add()
     var input :Int
     do {
         input = menu()
@@ -82,3 +100,4 @@ fun main(args: Array<String>) {
         println()
     }while (input != -1)
 }
+
