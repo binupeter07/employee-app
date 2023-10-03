@@ -1,4 +1,6 @@
-package ie.setu
+package models
+
+import ie.setu.roundTwoDecimals
 
 class Employee(var firstName:String, var surName:String, var gender:Char, var employeeID:Int,
                var grossSalary:Double, var payePercentage:Double, var prsiPercentage:Double,
@@ -25,21 +27,21 @@ class Employee(var firstName:String, var surName:String, var gender:Char, var em
 
 
         println(
-            """    -------------------------------------------------------------------
-    |                       Monthly Payslip                           |
-    |-----------------------------------------------------------------|
-    |   Employee Name:${getFullName()}       Employee Id:${employeeID}          |
-    |-----------------------------------------------------------------|
-    |   PAYMENT DETAILS                   DEDUCTION DETAILS           |
-    |-----------------------------------------------------------------|
-    |   Salary:${getMonthlySalary()}                     PAYEE: ${getMonthlyPAYE()}              |
-    |   Bonus: ${getBonus()}                     PRSI:${getMonthlyPRSI()}                 |
-    |                                     Cycle To Work:${cycleToWorkMonthlyDeduction}         |
-    |-----------------------------------------------------------------|
-    |   Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}     |
-    |-----------------------------------------------------------------|
-    |                    NET PAY: ${getNetMonthlyPay()}                               |
-    -------------------------------------------------------------------"""
+            """    -----------------------------------------------------------------
+                           Monthly Payslip                           
+    -----------------------------------------------------------------
+       Employee Name:${getFullName()}       Employee Id:${employeeID}               
+    -----------------------------------------------------------------
+       PAYMENT DETAILS                   DEDUCTION DETAILS           
+    -----------------------------------------------------------------
+       Salary:${getMonthlySalary()}                    PAYEE: ${getMonthlyPAYE()}               
+       Bonus: ${getBonus()}                     PRSI:${getMonthlyPRSI()}                 
+                                         Cycle To Work:${cycleToWorkMonthlyDeduction}          
+    -----------------------------------------------------------------
+       Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}     
+    -----------------------------------------------------------------
+                        NET PAY: ${getNetMonthlyPay()}                             
+    -----------------------------------------------------------------"""
         )
 
     override fun toString(): String {

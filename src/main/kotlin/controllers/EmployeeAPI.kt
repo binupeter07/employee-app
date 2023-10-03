@@ -1,4 +1,7 @@
-package ie.setu
+package controllers
+
+import models.Employee
+
 var lastId = 0
 
     internal fun getId(): Int {
