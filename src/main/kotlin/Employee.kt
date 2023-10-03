@@ -40,4 +40,8 @@ class Employee(var firstName:String, var surName:String, var gender:Char, var em
     -------------------------------------------------------------------"""
         )
 
+    override fun toString(): String {
+        return "Employee(firstName='$firstName', surName='$surName', gender=$gender, employeeID=$employeeID, grossSalary=$grossSalary, payePercentage=$payePercentage, prsiPercentage=$prsiPercentage, annualBonus=$annualBonus, cycleToWorkMonthlyDeduction=$cycleToWorkMonthlyDeduction)"
+    }
+
 }

@@ -43,7 +43,8 @@ fun start() {
 }
 
 fun list(){
-    println(employees.findAll())
+    println(employees.findAll()
+        .forEach{ println(it)})
 }
 
 fun search() {
