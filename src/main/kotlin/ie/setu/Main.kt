@@ -1,13 +1,20 @@
-import java.math.RoundingMode
+package ie.setu
 
+import mu.KotlinLogging
 
 
 fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
 
 var employees = EmployeeAPI()
 
+val logger = KotlinLogging.logger {}
 
 fun main(args: Array<String>){
+    logger.info { "Launching Employee App" }
+    logger.info { "Welcome to Employee App" }
+    logger.info { "Great to see you again" }
+    logger.info{ "You can find the employee details here" }
+
     start()
 }
 
@@ -43,7 +50,8 @@ fun start() {
 }
 
 fun list(){
-    println(employees.findAll()
+    println(
+        employees.findAll()
         .forEach{ println(it)})
 }
 
