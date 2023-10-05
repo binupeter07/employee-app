@@ -1,5 +1,6 @@
 package controllers
 
+import ie.setu.getEmployeeById
 import models.Employee
 
 var lastId = 0
@@ -18,6 +19,12 @@ class EmployeeAPI {
         return employees
     }
 
+    fun sortByName(): List<Employee> {
+        val employees = findAll()
+        val sortedEmployees = employees.sortedBy { it.firstName }
+        return sortedEmployees
+    }
+
     fun findOne(id: Int): Employee? {
         return employees.find { p -> p.employeeID == id }
     }
@@ -31,6 +38,7 @@ class EmployeeAPI {
         employee.employeeID = getId()
         employees.remove(employee)
     }
+
 
 
 

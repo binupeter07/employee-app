@@ -8,9 +8,9 @@ class Employee(var firstName:String, var surName:String, var gender:Char, var em
 
 
     fun getFullName() = if (gender == 'm' || gender == 'M') {
-        " Mr. ${firstName} ${surName}"
+        " Mr. $firstName $surName"
     } else {
-        "Mrs. ${firstName} ${surName}"
+        "Mrs. $firstName $surName"
     }
 
     fun getMonthlySalary() = roundTwoDecimals(grossSalary / 12)

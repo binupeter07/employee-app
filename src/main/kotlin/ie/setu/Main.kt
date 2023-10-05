@@ -5,10 +5,13 @@ import models.Employee
 import mu.KotlinLogging
 
 
+//RoundTwoDecimal Method
 fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
 
 var employees = EmployeeAPI()
 
+
+//Gradle logging
 val logger = KotlinLogging.logger {}
 
 fun main(args: Array<String>){
@@ -34,6 +37,9 @@ fun menu(): Int{
          |Enter Option : """.trimMargin())
     return readLine()!!.toInt()
 }
+
+//Start function
+
 fun start() {
     var input: Int
 
@@ -45,6 +51,7 @@ fun start() {
             3 -> search()
             4 -> paySlip()
             5 -> remove()
+            6 -> sortBy()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -53,13 +60,23 @@ fun start() {
     } while (input != -1)
 }
 
+//List Function
 fun list(){
     println(
         employees.findAll()
         .forEach{ println(it)})
 }
 
+// Source of sortBy method i learned
+// https://www.youtube.com/watch?v=IUYoJSgaHQE
+fun sortBy(){
+    println(employees.sortByName()
+        .forEach{ println(it) })
 
+}
+
+
+//Search Method
 fun search() {
     val employee = getEmployeeById()
     if (employee == null)
@@ -68,6 +85,8 @@ fun search() {
         println(employee)
 }
 
+
+//Remove Method
 fun remove(){
      val employee = getEmployeeById()
     if(employee == null)
@@ -77,12 +96,16 @@ fun remove(){
         println("Successfully Deleted")
 }
 
+
+// Find employee by ID method
 internal fun getEmployeeById(): Employee? {
     print("Enter the employee id to search by: ")
     val employeeID = readLine()!!.toInt()
     return employees.findOne(employeeID)
 }
 
+
+// Printing payslip method
 fun paySlip(){
     val employee = getEmployeeById()
     if (employee != null)
@@ -91,10 +114,12 @@ fun paySlip(){
 
 fun dummyData() {
     employees.create(Employee("Joe", "Soap", 'm', 0, 35655.43, 31.0, 7.5, 2000.0, 25.6))
-    employees.create(Employee("Joan", "Murphy", 'f', 0, 54255.13, 32.5, 7.0, 1500.0, 55.3))
+    employees.create(Employee("Binu", "Murphy", 'f', 0, 54255.13, 32.5, 7.0, 1500.0, 55.3))
     employees.create(Employee("Mary", "Quinn", 'f', 0, 75685.41, 40.0, 8.5, 4500.0, 0.0))
 }
 
+
+//Add method
 fun add(){
     print("Enter first name: ")
     val firstName = readLine().toString()
