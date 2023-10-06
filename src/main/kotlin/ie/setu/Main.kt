@@ -33,6 +33,7 @@ fun menu(): Int{
          |   4. Print Payslip for Employee
          |   5. Remove Employee
          |   6. Sort Employee by Name
+         |   7. Update Employee
          |  -1. Exit
          |       
          |Enter Option : """.trimMargin())
@@ -40,7 +41,6 @@ fun menu(): Int{
 }
 
 //Start function
-
 fun start() {
     var input: Int
 
@@ -53,6 +53,7 @@ fun start() {
             4 -> paySlip()
             5 -> remove()
             6 -> sortBy()
+            7 -> updateEmployee()
             -99 -> dummyData()
             -1 -> println("Exiting App")
             else -> println("Invalid Option")
@@ -89,15 +90,50 @@ fun search() {
 
 //Remove Method
 fun remove(){
-     val employee = getEmployeeById()
+
+
+    val employee = getEmployeeById()
     if(employee == null)
         println("No employee found")
-    else
+    else {
         employees.delete(employee)
         println("Successfully Deleted")
+    }
 }
 
+//Update Method
+fun updateEmployee(){
+    println("Enter the id of Employee")
+    val employeeID = readLine()!!.toInt()
+    println("What you should want to update")
 
+    print(""" 
+         |Employee Menu
+         |   1. Change First Name
+         |   2. Change Second Name
+         |   3. Change Gross Salary
+         |   4. Change Paye Percentage
+         |   5. Change PRSI Percentage
+         |       
+         |Enter Option : """.trimMargin())
+         val change = readLine()!!.toInt()
+
+
+    when (change) {
+        1 -> println("Enter the first name")
+        2 -> println("Enter the second name")
+        3 -> println("Enter the gross salary")
+        4 -> println("Enter the PAYE Percentage")
+        5 -> println("Enter the PRSI Percentage")
+        else -> println("Invalid Option")
+    }
+    val updateData = readLine()!!
+    println()
+
+        employees.updated(employeeID,change,updateData)
+
+
+}
 // Find employee by ID method
 internal fun getEmployeeById(): Employee? {
     print("Enter the employee id to search by: ")
