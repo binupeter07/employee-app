@@ -32,6 +32,7 @@ fun menu(): Int{
          |   3. Search Employees 
          |   4. Print Payslip for Employee
          |   5. Remove Employee
+         |   6. Sort Employee by Name
          |  -1. Exit
          |       
          |Enter Option : """.trimMargin())
@@ -105,7 +106,7 @@ internal fun getEmployeeById(): Employee? {
 }
 
 
-// Printing payslip method
+// Printing payslip method-9
 fun paySlip(){
     val employee = getEmployeeById()
     if (employee != null)
