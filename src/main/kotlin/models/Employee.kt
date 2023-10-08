@@ -35,7 +35,7 @@ class Employee(var firstName:String, var surName:String, var gender:Char, var em
        PAYMENT DETAILS                   DEDUCTION DETAILS           
     -----------------------------------------------------------------
        Salary:${getMonthlySalary()}                    PAYEE: ${getMonthlyPAYE()}               
-       Bonus: ${getBonus()}                     PRSI:${getMonthlyPRSI()}                 
+       Bonus: ${getBonus()}                      PRSI:${getMonthlyPRSI()}                 
                                          Cycle To Work:${cycleToWorkMonthlyDeduction}          
     -----------------------------------------------------------------
        Gross:${getGrossMonthlyPay()}                     Total Deduction:${getTotalMonthlyDeductions()}     

@@ -91,7 +91,7 @@ fun search() {
 //Remove Method
 fun remove(){
 
-
+    list()
     val employee = getEmployeeById()
     if(employee == null)
         println("No employee found")
@@ -142,8 +142,9 @@ internal fun getEmployeeById(): Employee? {
 }
 
 
-// Printing payslip method-9
+// Printing payslip method
 fun paySlip(){
+    list()
     val employee = getEmployeeById()
     if (employee != null)
         println(employee.getPayslip())
